@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1811" systemVersion="12C2034" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Album" representedClassName="Album" syncable="YES">
+        <attribute name="album_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cover_photo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="is_private" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="pictures" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Picture" inverseName="album" inverseEntity="Picture" syncable="YES"/>
+        <relationship name="user_profile" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Profile" inverseName="albums" inverseEntity="Profile" syncable="YES"/>
+    </entity>
+    <entity name="Comment" representedClassName="Comment" syncable="YES">
+        <attribute name="comment_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="user_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="user_name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="picture" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Picture" inverseName="comments" inverseEntity="Picture" syncable="YES"/>
+    </entity>
+    <entity name="Feeds" representedClassName="Feeds" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="image_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tweet_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="user_id" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="ImageMap" representedClassName="ImageMap" syncable="YES">
+        <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="picture" optional="YES" toMany="YES" minCount="1" deletionRule="Nullify" destinationEntity="Picture" inverseName="image" inverseEntity="Picture" syncable="YES"/>
+    </entity>
+    <entity name="Location" representedClassName="Location" syncable="YES">
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="county" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="loc_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="user_favourite_locations" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Profile" inverseName="favourite_locations" inverseEntity="Profile" syncable="YES"/>
+    </entity>
+    <entity name="Notification" representedClassName="Notification" syncable="YES">
+        <attribute name="isPicture" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isRead" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="notData" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="notID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notItemID" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Picture" representedClassName="Picture" syncable="YES">
+        <attribute name="caption" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="comments_count" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="image_url" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="likes_count" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pic_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="user_desc" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="album" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Album" inverseName="pictures" inverseEntity="Album" syncable="YES"/>
+        <relationship name="comments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Comment" inverseName="picture" inverseEntity="Comment" syncable="YES"/>
+        <relationship name="image" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ImageMap" inverseName="picture" inverseEntity="ImageMap" syncable="YES"/>
+    </entity>
+    <entity name="Profile" representedClassName="Profile" syncable="YES">
+        <attribute name="account_type" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="bio" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="image_count" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="is_private" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="picture" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="preference" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="user_id" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="albums" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Album" inverseName="user_profile" inverseEntity="Album" syncable="YES"/>
+        <relationship name="favourite_locations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Location" inverseName="user_favourite_locations" inverseEntity="Location" syncable="YES"/>
+        <relationship name="followers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Profile" syncable="YES"/>
+        <relationship name="following" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Profile" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Album" positionX="160" positionY="192" width="128" height="150"/>
+        <element name="Comment" positionX="160" positionY="192" width="128" height="135"/>
+        <element name="Feeds" positionX="160" positionY="192" width="128" height="120"/>
+        <element name="ImageMap" positionX="160" positionY="192" width="128" height="90"/>
+        <element name="Location" positionX="160" positionY="192" width="128" height="165"/>
+        <element name="Picture" positionX="160" positionY="192" width="128" height="195"/>
+        <element name="Profile" positionX="160" positionY="192" width="128" height="255"/>
+        <element name="Notification" positionX="160" positionY="192" width="128" height="135"/>
+    </elements>
+</model>

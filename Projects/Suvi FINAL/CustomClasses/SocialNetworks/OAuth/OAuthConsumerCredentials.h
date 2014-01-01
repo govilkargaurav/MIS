@@ -1,0 +1,34 @@
+/*
+ *  OAuthConsumerCredentials.h
+ *
+ *  Created by Jaanus Kase on 16.01.10.
+ *  Copyright 2010. All rights reserved.
+ *
+ */
+
+
+//#define OAUTH_TWITTER_CONSUMER_KEY @"4WAHkH8AzFf20GqAwUOl4Q"
+//#define OAUTH_TWITTER_CONSUMER_SECRET @"TBA3pKDewNYqJxNmC9BkehkOWxD8SngqhYyJpTd092Q"
+#define OAUTH_TWITTER_CONSUMER_KEY @"uwSnNAnxyxhcxO9Ke0ceZA"
+#define OAUTH_TWITTER_CONSUMER_SECRET @"Jem7gA3ZXLlNx9hZww5NwZLK4XoG9WJTKkzFfbNfMY"
+#define TWITPIC_API_KEY @"4WAHkH8AzFf20GqAwUOl4Q"
+#define OAUTH_TWITTER_REQUEST_TOKEN_URL @"https://api.twitter.com/oauth/request_token"
+#define OAUTH_TWITTER_AUTHORISE_URL @"https://api.twitter.com/oauth/authorize"
+#define OAUTH_TWITTER_ACCESS_TOKEN_URL @"https://api.twitter.com/oauth/access_token"
+
+#define OAUTH_TUMBLR_CONSUMER_KEY @"XZhltgggBQcdl5fpbPb0IT5TIAIIVhK77HicgwiDCDoY0jhuS7"
+#define OAUTH_TUMBLR_CONSUMER_SECRET @"SIbl0Tg0WV0Ls2hWe6cFGJtR7LMzCWaIw4a6pGdKUKH3fXGvjA"
+#define OAUTH_TUMBLR_REQUEST_TOKEN_URL @"http://www.tumblr.com/oauth/request_token"
+#define OAUTH_TUMBLR_AUTHORISE_URL @"http://www.tumblr.com/oauth/authorize"
+#define OAUTH_TUMBLR_ACCESS_TOKEN_URL @"http://www.tumblr.com/oauth/access_token"
+
+//#define OAUTH_FOURSQUARE_CONSUMER_KEY @"LRWKRPXUVD43JMMJADCTXRRJ0LYUFTQFM2TW1VGF3HPUE04W"
+//#define OAUTH_FOURSQUARE_CONSUMER_SECRET @"V3RGE3RZIAWGSNVX4G1JVJJZO4TQROFBRJAQNJRUEIS1CJUB"
+#define OAUTH_FOURSQUARE_CONSUMER_KEY @"PUEV5YPUUBW11RSR1CMKLLYZT5TMXZRL0AC2W1P3WA2RJPJS"
+#define OAUTH_FOURSQUARE_CONSUMER_SECRET @"3CWKTTMFNWD3W0KJRLTEWHXFN2IMSX5YIC0D040CNJMZ1WVQ"
+
+#define NOTIFY_OAUTH_VERIFY_RECEIVED @"NOTIFY_OAUTH_VERIFY_RECEIVED"
+#define OAUTH_CALLBACK_URL @"plainoauth://handleOAuthLogin"
+
+#define OAUTH_WEBVIEW_BG_COLOR [UIColor colorWithPatternImage:[UIImage imageNamed:@"bgapp"]]
+

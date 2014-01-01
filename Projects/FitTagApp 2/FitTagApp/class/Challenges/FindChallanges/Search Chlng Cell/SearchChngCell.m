@@ -1,0 +1,43 @@
+//
+//  SearchChngCell.m
+//  FitTagApp
+//
+//  Created by apple on 2/20/13.
+//  Copyright (c) 2013 __MyCompanyName__. All rights reserved.
+//
+
+#import "SearchChngCell.h"
+
+@implementation SearchChngCell
+@synthesize profilrEgoImageView;
+@synthesize lblUserName;
+@synthesize lblChallengeName;
+@synthesize lblLocation;
+@synthesize lblTime;
+@synthesize txtViewDescriptionTag;
+@synthesize txtViewLikes;
+@synthesize btnSeeOlgerComment;
+@synthesize teaserEgoImageView;
+@synthesize btnLikeChallenge;
+@synthesize btnComment;
+@synthesize btnReport;
+@synthesize btnShare;
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        // Initialization code
+        NSArray *nibArray=[[NSBundle mainBundle]loadNibNamed:@"SearchChngCell" owner:self options:nil];
+        self=[nibArray objectAtIndex:0];
+    }
+    return self;
+}
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
+    [super setSelected:selected animated:animated];
+
+    // Configure the view for the selected state
+}
+
+@end

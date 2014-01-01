@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>key</key>
+	<array>
+		<dict>
+			<key>content</key>
+			<string>&quot;easyAIS&quot; is a simple to use marine app for iPhone, iPod touch and iPad. Designed to work in conjunction with the Weatherdock easyTRX2-IS WIFI or easyAIS-IS WIFI wireless AIS transmitter/receiver. This application will display all of the received AIS targets on radar like display. If you have installed this application and do not own Weatherdock easyTRX2-IS WIFI or easyAIS-IS WIFI, visit easyAIS.de to learn more about the easyAIS hardware and what you will need to create a wireless AIS system on your boat.
+To connect this application to the wireless AIS transmitter/receiver, tap the “Home” button and from the home screen select “Settings” &gt;”Wifi”&gt;”On”.</string>
+			<key>type</key>
+			<string>text</string>
+		</dict>
+		<dict>
+			<key>content</key>
+			<string>helpimage1.png</string>
+			<key>type</key>
+			<string>image</string>
+		</dict>
+		<dict>
+			<key>content</key>
+			<string>In the “Choose a Network...” list select the network &quot;easyTRX2_XXX&quot; or  &quot;easyAIS_XXX&quot; and enter the password written on the back of the device
+If another network is already selected, tap on the Blue disclosure button next to the selected network and select “Forget the network”.
+Exit Settings and launch the easyAIS application.
+ From the &quot;Radar View&quot;, ”Instrument Monitor” or “Targets” screen, tap on “Setup” tab and then “TCP/IP” button.</string>
+			<key>type</key>
+			<string>text</string>
+		</dict>
+		<dict>
+			<key>content</key>
+			<string>helpimage2.png</string>
+			<key>type</key>
+			<string>image</string>
+		</dict>
+		<dict>
+			<key>content</key>
+			<string>The Host and Port should be already set to correctly connect to the easyAIS (Host =192.168.10.1 and Port = 5101). Set “Location Services” to “ON” if there is no GPS receiver connected to easyAIS-IS WIFI or if there is no GPS antenna connected to the Weatherdock easyTRX2-IS WIFI. This will then use the internal GPS and/or “Location Services” of the Apple mobile device.
+Enable “Link” and ensure that some green text NMEA 0183 data is shown, then select “Save” button, then &quot;Save&quot; tab on the “Setup” Page.
+After you click on the &quot;Radar View&quot; you should now see your vessel centered in the middle of the range ring display, if you select the “Radar View”. Your boat is shown as a black triangle. All of the received AIS targets will be shown around your vessel relative to your position. Note that the easyAIS display is Course up not North up, which is much better for AIS display. The &quot;+&quot; and &quot;-&quot; buttons can be used to expand or decrease the range.</string>
+			<key>type</key>
+			<string>text</string>
+		</dict>
+		<dict>
+			<key>content</key>
+			<string>helpimage3.png</string>
+			<key>type</key>
+			<string>image</string>
+		</dict>
+		<dict>
+			<key>content</key>
+			<string>Selecting the &quot;Target list&quot; tab will display the AIS target list which is sorted by the range of the target from the own ships position. </string>
+			<key>type</key>
+			<string>text</string>
+		</dict>
+		<dict>
+			<key>content</key>
+			<string>helpimage4.png</string>
+			<key>type</key>
+			<string>image</string>
+		</dict>
+		<dict>
+			<key>content</key>
+			<string>Tapping on a target in the list or tapping on an ship icon on the Radar View will show all of the information about the AIS target.</string>
+			<key>type</key>
+			<string>text</string>
+		</dict>
+		<dict>
+			<key>content</key>
+			<string>helpimage5.png</string>
+			<key>type</key>
+			<string>image</string>
+		</dict>
+		<dict>
+			<key>content</key>
+			<string>Selecting “Instrument Monitor” tab  will display additional GPS inform
+ation if available.&quot;
+</string>
+			<key>type</key>
+			<string>text</string>
+		</dict>
+		<dict>
+			<key>content</key>
+			<string>helpimage6.png</string>
+			<key>type</key>
+			<string>image</string>
+		</dict>
+	</array>
+</dict>
+</plist>

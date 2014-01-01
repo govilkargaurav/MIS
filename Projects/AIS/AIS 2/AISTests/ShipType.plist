@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ShipTypes</key>
+	<dict>
+		<key>0</key>
+		<string>Vessel</string>
+		<key>20</key>
+		<string>Wing in Grand</string>
+		<key>30</key>
+		<string>Vessel Finshing</string>
+		<key>31</key>
+		<string>Vessel Towing</string>
+		<key>32</key>
+		<string>Vessel Towing &gt; 200m</string>
+		<key>33</key>
+		<string>Vessel in Underwater Operations</string>
+		<key>34</key>
+		<string>Vessel in Diving Operations</string>
+		<key>35</key>
+		<string>Vessel in Military Operation</string>
+		<key>36</key>
+		<string>Sailing Vessel</string>
+		<key>37</key>
+		<string>Pleasure Craft</string>
+		<key>38</key>
+		<string>Vessel</string>
+		<key>40</key>
+		<string>High Speed Craft</string>
+		<key>50</key>
+		<string>Pilot Vessel</string>
+		<key>51</key>
+		<string>SAR Vessel</string>
+		<key>52</key>
+		<string>Tug</string>
+		<key>53</key>
+		<string>Port Tender</string>
+		<key>54</key>
+		<string>Vessel with anti-pollution fac.</string>
+		<key>55</key>
+		<string>Law enforcement Vessel</string>
+		<key>56</key>
+		<string>Local Vessel</string>
+		<key>58</key>
+		<string>Medical Transport</string>
+		<key>59</key>
+		<string>Ship according RR Resol. No. 18</string>
+		<key>60</key>
+		<string>Passenger Ship</string>
+		<key>70</key>
+		<string>Cargo Ship</string>
+		<key>71</key>
+		<string>Cargo Ship with dangerous goods</string>
+		<key>75</key>
+		<string>Cargo Ship</string>
+		<key>80</key>
+		<string>Tanker</string>
+		<key>81</key>
+		<string>Tanker with dangerous goods</string>
+		<key>85</key>
+		<string>Tanker</string>
+		<key>90</key>
+		<string>No Information</string>
+	</dict>
+</dict>
+</plist>

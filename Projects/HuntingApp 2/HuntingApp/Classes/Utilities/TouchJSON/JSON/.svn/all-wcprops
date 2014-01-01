@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svnrepo/!svn/ver/44929/SCB-Prototyping/SCB%20Common%20library/trunk/Frameworks/TouchJSON/JSON
+END
+CJSONScanner.m
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svnrepo/!svn/ver/44929/SCB-Prototyping/SCB%20Common%20library/trunk/Frameworks/TouchJSON/JSON/CJSONScanner.m
+END
+CJSONSerializer.h
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svnrepo/!svn/ver/44929/SCB-Prototyping/SCB%20Common%20library/trunk/Frameworks/TouchJSON/JSON/CJSONSerializer.h
+END
+CJSONDeserializer.h
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svnrepo/!svn/ver/44929/SCB-Prototyping/SCB%20Common%20library/trunk/Frameworks/TouchJSON/JSON/CJSONDeserializer.h
+END
+CJSONSerializer.m
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svnrepo/!svn/ver/44929/SCB-Prototyping/SCB%20Common%20library/trunk/Frameworks/TouchJSON/JSON/CJSONSerializer.m
+END
+CJSONDeserializer.m
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svnrepo/!svn/ver/44929/SCB-Prototyping/SCB%20Common%20library/trunk/Frameworks/TouchJSON/JSON/CJSONDeserializer.m
+END
+CJSONScanner.h
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svnrepo/!svn/ver/44929/SCB-Prototyping/SCB%20Common%20library/trunk/Frameworks/TouchJSON/JSON/CJSONScanner.h
+END
+JSONRepresentation.h
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svnrepo/!svn/ver/44929/SCB-Prototyping/SCB%20Common%20library/trunk/Frameworks/TouchJSON/JSON/JSONRepresentation.h
+END

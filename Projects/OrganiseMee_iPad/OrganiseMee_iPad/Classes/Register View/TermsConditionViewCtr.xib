@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+    <dependencies>
+        <deployment defaultVersion="1280" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TermsConditionViewCtr">
+            <connections>
+                <outlet property="lblTermsTitle" destination="9" id="17"/>
+                <outlet property="txtTerms" destination="10" id="15"/>
+                <outlet property="view" destination="1" id="3"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="1">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="bgTranscolor1.png" id="19">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="bgTrans.png" id="18">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="logo.png" id="4">
+                    <rect key="frame" x="58" y="20" width="205" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="General Terms and Conditions" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9">
+                    <rect key="frame" x="20" y="69" width="291" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="18"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" id="10">
+                    <rect key="frame" x="20" y="98" width="280" height="362"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <mutableString key="text">‘Organisemee’ refers to the service provided subject to these General Terms and Conditions and/or Organisemee company.
+
+By logging on to Organisemee, users accept the General Terms and Conditions (hereinafter the ‘GTC’) for using Organisemee.
+
+Organisemee operates Organisemee services under various top-level domains (organismee.com, organisemee.de etc.), various sub-domains and aliases of these domains as well as several smart phone applications (apps). All websites on which Organisemee provides Organisemee Services are hereinafter referred to as “Organisemee Websites.” All smart phone apps on which Organisemee provides Organisemee Services are hereinafter referred to as “Organisemee Apps”.
+
+These GTC shall govern the contract relationship between the User and Organisemee, irrespective of which Organisemee Website or APP the User is registered with or logged on to.
+
+The User enters into this agreement on the use of Organisemee Services with Organisemee UG (haftungsbeschränkt), Hohenstaufenweg 17, 76337 Waldbronn, Germany. Additional contact information, commercial registry data, as well as the name of the authorized representative of Organisemee UG can be found under the Internet side http://www.organisemee.com/en/imprint.
+
+The services provided by Organisemee are intended exclusively for persons above 13 years.
+The User can read, call up, print out, download and or save these General Terms and Conditions under the Internet address http://www.organisemee.com/en/termsofuse at any time, even after the agreement has been closed.
+
+Data Protection
+
+The protection of your personal data is of utmost concern to Organisemee.
+
+In terms and conditions on data protection Organisemee would like to inform you about how Organisemee treats your personal data and how you can exchange this data with other users of Organisemee.
+
+These terms and conditions on data protection supplement can be found under the Internet address http://www.organisemee.com/en/privacypolicy.</mutableString>
+                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="14"/>
+                    </connections>
+                </textView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="bgTrans.png" width="296" height="449"/>
+        <image name="bgTranscolor1.png" width="320" height="504"/>
+        <image name="logo.png" width="205" height="32"/>
+    </resources>
+</document>

@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'AISTests' target in the 'AISTests' project
+//
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+#endif

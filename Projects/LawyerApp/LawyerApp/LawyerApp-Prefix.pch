@@ -1,0 +1,48 @@
+//
+// Prefix header for all source files of the 'LawyerApp' target in the 'LawyerApp' project
+//
+
+#import <Availability.h>
+#import "NSString+Validation.h"
+#ifndef __IPHONE_4_0
+#warning "This project uses features only available in iOS SDK 4.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+#endif
+#define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
+#define GEOCODELOCATION_URL "http://maps.google.com/maps/geo?"
+#define WEBSERVICE_HEADER "http://www.empowerlegalapp.com/empower/ws/index.php?"
+
+#define APP_NAME @"Lawyer App"
+
+#define DocumentsDirectory [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, \
+NSUserDomainMask, YES) objectAtIndex:0]
+
+#define SETFONT(_name_, _size_) ((UIFont *)[UIFont fontWithName:(NSString *)(_name_) size:(CGFloat)(_size_)])
+
+#define RGBCOLOR(r,g,b) [UIColor colorWithRed:(r)/256.0f green:(g)/256.0f blue:(b)/256.0f alpha:1.0f]
+
+#define HIDE_ACTIVITY @"HIDE_ACTIVITY"
+#define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0) //1
+
+#define INTERNET_NOT_AVAILABLE if (appdelegate.InternetConnectionFlag==0) {return;}
+
+#define APP_DELEGATE appdelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate]
+
+//alert with only message
+#define DisplayAlert(msg) { UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:nil message:msg delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil]; [alertView show]; }
+
+//alert with message and title
+#define DisplayAlertWithTitle(title,msg){UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:title message:msg delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil]; [alertView show]; }
+
+#define DisplayNoInternate {UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"My M8tes" message:@"oops!!!There is a problem in the internet connection!!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil]; [alertView show]; }
+
+
+//alert with only localized message
+#define DisplayLocalizedAlert(msg){UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(msg,@"") delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil]; [alertView show]; }
+
+//alert with localized message and title
+#define DisplayLocalizedAlertWithTitle(msg,title){UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(title,@"") message:NSLocalizedString(msg,@"") delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil]; [alertView show]; }

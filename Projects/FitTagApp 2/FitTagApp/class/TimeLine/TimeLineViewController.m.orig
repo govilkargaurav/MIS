@@ -1,0 +1,782 @@
+//
+//  TimeLineViewController.m
+//  FitTagApp
+//
+//  Created by apple on 2/19/13.
+//  Copyright (c) 2013 __MyCompanyName__. All rights reserved.
+//
+
+#import "TimeLineViewController.h"
+#import "ProfileViewController.h"
+#import "ActivityViewController.h"
+#import "CommentViewController.h"
+#import "CreateChlng1ViewController.h"
+#import "UIImageView+WebCache.h"
+#import "SDImageCache.h"
+#import "SearchChngCell.h"
+#import "ODRefreshControl.h"
+#import "TimeLineCostumCell.h"
+#import "GlobalClass.h"
+
+static char * const myIndexPathAssociationKey = "Gaurav";
+
+#define kStringArray [NSArray arrayWithObjects:@"Home", @"Profile",@"Activity",@"Setting", nil]
+
+@implementation TimeLineViewController
+
+@synthesize tblTimeline;
+@synthesize viewHome;
+@synthesize isOpen;
+@synthesize _dictDddAvtar;
+@synthesize _dictprofileImage;
+@synthesize activityIndicatorView,footerActivityIndicator,activityIndicator;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+- (void)didReceiveMemoryWarning
+{
+    // Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+    
+    // Release any cached data, images, etc that aren't in use.
+}
+
+#pragma mark - View lifecycle
+
+- (void)viewDidLoad
+{
+    
+    /* This notification get called from comment View to get latest Comment on feed Cell */
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getCommentsInMainView:) name:@"comments" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(commentbackAction) name:@"CommentBackAction" object:nil];
+    isPullToRefresh=NO;
+    cellBtnTag=0;
+    SingTimeRefresh=NO;
+    /* arrUserData we will use for to get all the information of the user. Likes, Comments, Feeds, and profile related info */
+    arrUserData=[[NSMutableArray alloc]init];
+    
+    /* This arr we will use for paging response */
+    mutArrPagingResponce=[[NSMutableArray alloc] init];
+    
+    
+    /* This is pull to refresh method  for TimeLine Screen */    
+    refreshControl = [[ODRefreshControl alloc] initInScrollView:self.tblTimeline];
+    [refreshControl addTarget:self action:@selector(refreshPull:) forControlEvents:UIControlEventValueChanged];
+
+    
+    [self setNavigationComponent];
+    isOpen=NO;
+    
+    dispatch_async(kBgQueue,^{
+        
+// This Method fetchout all the Likes and Comments from database Table. 
+        
+        [self getUserAndChallengeDate:refreshControl];
+        
+    });
+    
+    [super viewDidLoad];
+    
+}
+
+
+-(void)refreshPull:(ODRefreshControl *)refreshNew{
+    
+    dispatch_async(kBgQueue,^{
+        isPullToRefresh=YES;
+        [self getUserAndChallengeDate:refreshNew];
+        
+        dispatch_async(dispatch_get_main_queue(),^{
+            
+            
+            [[NSBundle mainBundle]loadNibNamed:@"TimeLineViewController" owner:self options:nil];
+            refreshControl = [[ODRefreshControl alloc] initInScrollView:self.tblTimeline];
+            [refreshControl addTarget:self action:@selector(refreshPull:) forControlEvents:UIControlEventValueChanged];
+        });
+        
+        
+    });
+    
+    
+}
+
+
+
+-(void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getCommentsInMainView:) name:@"comments" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(commentbackAction) name:@"CommentBackAction" object:nil];
+
+    
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    
+    if(self.viewHome.frame.origin.y==44){
+        [self viewHomeCloseAnim];
+        
+    }
+
+    
+}
+
+- (void)viewDidUnload
+{
+    [self setTblTimeline:nil];
+    [self setViewHome:nil];
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    // Return YES for supported orientations
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+#pragma mark Get UserData And ChallengeData
+-(void)getUserAndChallengeDate:(ODRefreshControl *)refreshControl1
+{
+    SingTimeRefresh=YES;
+    double delayInSeconds = 3.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [refreshControl1 endRefreshing];
+    });
+    
+    //[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+    
+    //Create query for all Post object by the current user
+    
+    PFQuery *postQuery = [PFQuery queryWithClassName:@"Challenge"];
+    [postQuery addDescendingOrder:@"createdAt"];
+    [postQuery includeKey:@"userId"];
+    [postQuery whereKeyExists:@"objectId"];
+    // Run the query
+    
+    if(isPullToRefresh){
+        isPullToRefresh = NO;
+        [postQuery setSkip:0];
+        [postQuery setSkip:0];
+        [postQuery setLimit:[arrUserData count]];
+        [arrUserData removeAllObjects];
+    }else{
+        [postQuery setSkip:[arrUserData count]];
+        [postQuery setLimit:5];
+    }
+
+    mutArrPagingResponce= [[postQuery findObjects] mutableCopy];
+    
+            for (int j=0; j<[mutArrPagingResponce count]; j++) {
+                objChallengeInfo=[mutArrPagingResponce objectAtIndex:j];
+                
+                PFQuery *queryForLikeComment=[PFQuery queryWithClassName:@"tbl_Likes"];
+                [queryForLikeComment whereKey:@"ChallengeId" equalTo:[objChallengeInfo objectId]];
+                [queryForLikeComment includeKey:@"userId"];
+                [queryForLikeComment addDescendingOrder:@"createdAt"];
+                NSMutableArray *arrAllData=[[NSMutableArray alloc]initWithArray:[[queryForLikeComment findObjects] mutableCopy]];
+                [objChallengeInfo addObjectsFromArray:arrAllData forKey:@"likesAndComments"];
+                
+                
+                PFQuery *queryForLikeComment1=[PFQuery queryWithClassName:@"tbl_comments"];
+                [queryForLikeComment1 whereKey:@"ChallengeId" equalTo:[objChallengeInfo objectId]];
+                [queryForLikeComment1 includeKey:@"userId"];
+                [queryForLikeComment1 setLimit:4];
+                [queryForLikeComment1 addDescendingOrder:@"createdAt"];
+                NSMutableArray *arrAllData1=[[NSMutableArray alloc]initWithArray:[[queryForLikeComment1 findObjects] mutableCopy]];
+                [objChallengeInfo addObjectsFromArray:arrAllData1 forKey:@"onlyComments"];
+               
+            }
+            
+            for (int i = 0; i < [mutArrPagingResponce count];i++)
+            {
+                [arrUserData addObject:[mutArrPagingResponce objectAtIndex:i]];
+            }
+    
+
+    dispatch_async(dispatch_get_main_queue(),^{
+        
+        [tblTimeline setTableFooterView:nil];
+        [self stopAnimation];
+        [tblTimeline reloadData];
+        [tblTimeline setHidden:NO];
+        SingTimeRefresh=NO;
+    });
+}
+
+#pragma mark- TableView Delegate methods
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;    //count of section
+    
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    return [arrUserData count];
+
+    
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+        
+    NSString *CellIdentifier = [NSString stringWithFormat:@"%i %i",indexPath.row,indexPath.section];
+    
+    cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    NSLog(@"ObjectChallengeInfo %@",objChallengeInfo );
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell.tag = indexPath.row + 1;
+        objChallengeInfo=[arrUserData objectAtIndex:indexPath.row];
+        obj_SearchResult_Cell=[[TimeLineCostumCell alloc] initWithNibName:@"TimeLineCostumCell" bundle:nil andD:objChallengeInfo row:indexPath.row userData:[arrUserData mutableCopy]];// name:nil index:nil];
+        [cell.contentView addSubview:obj_SearchResult_Cell.view];
+        obj_SearchResult_Cell = nil;
+         //cellBtnTag++;
+        
+    }
+
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    return cell;
+
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{   /*
+    objChallengeInfo=[arrUserData objectAtIndex:indexPath.row];
+    NSArray *ary=[objChallengeInfo objectForKey:@"onlyComments"];
+    
+    
+    if(ary.count==0){
+        return 390;
+    }else if(ary.count==1){
+        return 395;
+    }else if(ary.count==2){
+        return 410;
+    }else if(ary.count==3){
+        return 425;
+    }else if(ary.count>=4){
+        return 440;
+    }
+    */
+    return 440;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    ////NSLog(@"didSelectRowAtIndexPath");
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+} 
+#pragma mark like and unlike Challenge and get likes Methods
+
+-(IBAction)btnReportPressed:(id)sender{
+    
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Report  Challenge"
+                                                             delegate:self
+                                                    cancelButtonTitle:nil
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:nil];
+    [actionSheet addButtonWithTitle:@"Roport this Challenge"];
+    [actionSheet addButtonWithTitle:@"Cancel"];
+     actionSheet.destructiveButtonIndex = 1;
+    [actionSheet showInView:self.view];
+
+    
+}
+-(IBAction)btnSharePressed:(id)sender{
+
+}
+-(IBAction)unlikeChallenge:(id)sender{
+
+    //    PFObject *obj=[arrayTemp objectAtIndex:0];
+    //    [obj deleteInBackground];
+
+}
+
+#pragma mark ActionSheet Delegate
+//Action sheet for Image Capturing
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    ////NSLog(@"Button Index %d",buttonIndex);
+    //For Camera
+    if (buttonIndex == 0)
+    {
+        
+    }
+
+}
+
+-(IBAction)likeChallenge:(id)sender{
+    
+    if (IsLiked==YES) {
+        IsLiked=NO;
+        objChallengeInfo=[arrUserData objectAtIndex:[sender tag]-1];
+        PFQuery *queryForLikeComment=[PFQuery queryWithClassName:@"tbl_Likes"];
+        [queryForLikeComment whereKey:@"ChallengeId" equalTo:[objChallengeInfo objectId]];
+        [queryForLikeComment includeKey:@"userId"];
+        [queryForLikeComment addDescendingOrder:@"createdAt"];
+        NSMutableArray *arrAllData=[[NSMutableArray alloc]initWithArray:[queryForLikeComment findObjects]];
+        PFObject *obj=[arrAllData objectAtIndex:0];
+        PFUser *user=[obj objectForKey:@"userId"];
+        if ([[user username] isEqualToString:[[PFUser currentUser] username]]) {
+            
+            [obj delete];
+            
+            UITableViewCell *cell1=[tblTimeline cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[sender tag]-1 inSection:0]];
+            NSArray *arry = [cell1.contentView subviews];
+            for (UIView *view in arry)
+            {
+                if ([view isKindOfClass:[UIView class]])
+                {
+                    NSArray * ViewSub = [view subviews];
+                    for (UITextView *txtView in ViewSub)
+                    {
+                        if ([txtView isKindOfClass:[UITextView class]])
+                        {
+                            if (txtView.tag == [sender tag])
+                            {
+                                
+                                
+                                txtView.text= [txtView.text stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@,",[user username]] withString:@""];
+
+                            }
+                            
+                        }
+                    }
+                    
+                }
+            }
+            
+            [MBProgressHUD hideHUDForView:self.view animated:TRUE];
+        
+        }
+
+    }else{
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+    objChallengeInfo=[arrUserData objectAtIndex:[sender tag]-1];
+    PFObject *like = [PFObject objectWithClassName:@"tbl_Likes"];
+    
+    [like setObject:[PFUser currentUser] forKey:@"userId"];
+    [like setObject:[objChallengeInfo objectId] forKey:@"ChallengeId"];
+    
+    //Set ACL permissions for added security
+    PFACL *commentACL = [PFACL ACLWithUser:[PFUser currentUser]];
+    [commentACL setPublicReadAccess:YES];
+    [like setACL:commentACL];
+    [like saveInBackgroundWithBlock:^(BOOL Done, NSError *error){
+
+        if (Done) {
+            
+            objChallengeInfo=[arrUserData objectAtIndex:[sender tag]-1];
+            
+            PFQuery *queryForLikeComment=[PFQuery queryWithClassName:@"tbl_Likes"];
+            [queryForLikeComment whereKey:@"ChallengeId" equalTo:[objChallengeInfo objectId]];
+            [queryForLikeComment includeKey:@"userId"];
+            [queryForLikeComment addDescendingOrder:@"createdAt"];
+            NSMutableArray *arrAllData=[[NSMutableArray alloc]initWithArray:[queryForLikeComment findObjects]];
+            PFObject *obj=[arrAllData objectAtIndex:0];
+            PFUser *user=[obj objectForKey:@"userId"];
+
+            if ([[user username] isEqualToString:[[PFUser currentUser] username]]) {
+                
+                IsLiked =YES;
+                
+            }
+            
+            UITableViewCell *cell1=[tblTimeline cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[sender tag]-1 inSection:0]];
+            NSArray *arry = [cell1.contentView subviews];
+            for (UIView *view in arry)
+            {
+                if ([view isKindOfClass:[UIView class]])
+                {
+                    NSArray * ViewSub = [view subviews];
+                    for (UITextView *txtView in ViewSub)
+                    {
+                        if ([txtView isKindOfClass:[UITextView class]])
+                        {
+                            if (txtView.tag == [sender tag])
+                            {
+                                txtView.text= [NSString stringWithFormat:@"%@,%@",[user username],txtView.text];
+                            }
+                            
+                        }
+                    }
+                    
+                }
+            }
+
+            
+            [MBProgressHUD hideHUDForView:self.view animated:TRUE];
+            
+            
+        }
+        
+    }];
+    
+    }
+
+}
+-(IBAction)btnCommentPressed:(id)sender{
+    CommentViewController *commentVC=[[CommentViewController alloc]initWithNibName:@"CommentViewController" bundle:nil];
+    commentVC.title=@"Comment";
+    commentSenderTag =[sender tag];
+    objChallengeInfo=[arrUserData objectAtIndex:[sender tag]-1];
+
+    UITableViewCell *cell1=[tblTimeline cellForRowAtIndexPath:[NSIndexPath indexPathForRow:[sender tag]-1 inSection:0]];
+    NSArray *arry = [cell1.contentView subviews];
+    for (UIView *view in arry)
+    {
+        if ([view isKindOfClass:[UIView class]])
+        {
+            NSArray * ViewSub = [view subviews];
+            for (UILabel *lbl in ViewSub)
+            {
+                
+                //NSLog(@"lbl Tag ::--->%d",lbl.tag);
+               // NSLog(@"sender Tag ::--->%d",[sender tag]);
+                if ([lbl isKindOfClass:[UILabel class]])
+                {
+                    if (lbl.tag == [sender tag]+211)
+                    {
+                        lblComment = lbl;
+                    }
+                    if (lbl.tag == [sender tag]+212)
+                    {
+                        lblComment2 = lbl ;
+                    }
+                    
+                    if (lbl.tag == [sender tag]+213)
+                    {
+                        lblComment3 = lbl ;
+                    }
+                    if (lbl.tag == [sender tag]+214)
+                    {
+                        lblComment4 = lbl ;
+                    }
+
+                }
+            }
+
+            for (UIButton *btnCmnt2 in ViewSub)
+            {
+                if ([btnCmnt2 isKindOfClass:[UIButton class]])
+                {
+                    if (btnCmnt2.tag == [sender tag]+111)
+                    {
+                        btnComment1 = btnCmnt2 ;
+                    }
+                    if (btnCmnt2.tag == [sender tag]+112)
+                    {
+                        btnComment2 = btnCmnt2 ;
+                    }
+                    if (btnCmnt2.tag == [sender tag]+113)
+                    {
+                        btnComment3 = btnCmnt2 ;
+                    }
+                    if (btnCmnt2.tag == [sender tag]+114)
+                    {
+                        btnComment4 = btnCmnt2 ;
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+    commentVC.challengeId=[objChallengeInfo objectId];
+    [self.navigationController pushViewController:commentVC animated:YES];
+
+}
+
+-(void)getCommentsInMainView:(id)sender{
+    
+    //NSLog(@"%d",commentSenderTag-1);
+    objChallengeInfo=[arrUserData objectAtIndex:commentSenderTag-1];
+    PFQuery *queryForLikeComment1=[PFQuery queryWithClassName:@"tbl_comments"];
+    [queryForLikeComment1 whereKey:@"ChallengeId" equalTo:[objChallengeInfo objectId]];
+    [queryForLikeComment1 includeKey:@"userId"];
+    [queryForLikeComment1 setLimit:4];
+    [queryForLikeComment1 addDescendingOrder:@"createdAt"];
+    NSMutableArray *arrAllData1=[[NSMutableArray alloc]initWithArray:[[queryForLikeComment1 findObjects] mutableCopy]];
+    [objChallengeInfo addObjectsFromArray:arrAllData1 forKey:@"onlyComments"];
+    NSLog(@" Comments_%@",arrAllData1);
+
+    for (int i=0; i<[arrAllData1 count]; i++) {
+        PFObject *objActivity=[arrAllData1 objectAtIndex:i];
+        PFUser *user=[objActivity objectForKey:@"userId"];
+        if (i==0) {
+          //  NSLog(@"lbl Tag %d - btnTag %d",[lblComment tag],[btnComment1 tag]);
+            [btnComment1 setTitle:[user username] forState:UIControlStateNormal];
+            [lblComment setText:[objActivity  objectForKey:@"CommentText"]];
+            
+        }
+        else if(i==1){
+           // NSLog(@"lbl Tag2 %d - btnTag2 %d",[lblComment2 tag],[btnComment2 tag]);
+            [btnComment2 setTitle:[user username] forState:UIControlStateNormal];
+            [lblComment2 setText:[objActivity objectForKey:@"CommentText"]];
+        }else if(i==2){
+            [btnComment3 setTitle:[user username] forState:UIControlStateNormal];
+            [lblComment3 setText:[objActivity objectForKey:@"CommentText"]];
+        }
+        else if(i==3){
+            [btnComment4 setTitle:[user username] forState:UIControlStateNormal];
+            [lblComment4 setText:[objActivity objectForKey:@"CommentText"]];
+        }else{
+
+        }
+
+    }
+//    [self.tblTimeline beginUpdates];
+//    [self.tblTimeline reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:commentSenderTag-1 inSection:0], nil] withRowAnimation:UITableViewRowAnimationNone];
+//    [self.tblTimeline endUpdates]; 
+    
+//    if(arrAllData1.count==0){
+//       
+//        buttonComment.frame=CGRectMake(buttonComment.frame.origin.x, buttonComment.frame.origin.y-50, buttonComment.frame.size.width, buttonComment.frame.size.height);
+//   
+//       
+//        
+//    }else if(arrAllData1.count==1){
+//        buttonComment.frame=CGRectMake(buttonComment.frame.origin.x, buttonComment.frame.origin.y-35, buttonComment.frame.size.width, buttonComment.frame.size.height);
+//    
+//    }else if(arrAllData1.count==2){
+//       
+//        buttonComment.frame=CGRectMake(buttonComment.frame.origin.x, buttonComment.frame.origin.y-25, buttonComment.frame.size.width, buttonComment.frame.size.height);
+//        
+//        
+//    }else if(arrAllData1.count==3){
+//       
+//        buttonComment.frame=CGRectMake(buttonComment.frame.origin.x, buttonComment.frame.origin.y-10, buttonComment.frame.size.width, buttonComment.frame.size.height);
+//        
+//        
+//    }else if(arrAllData1.count>=4){
+//        
+//    }
+
+
+}
+
+-(void)commentbackAction{
+//    [self.tblTimeline beginUpdates];
+//    [self.tblTimeline reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:commentSenderTag-1 inSection:0], nil] withRowAnimation:UITableViewRowAnimationNone];
+//    [self.tblTimeline endUpdates];
+
+}
+
+#pragma mark- Button Actions
+
+- (IBAction)btnFindPressed:(id)sender {
+    FindChallengesViewConroller *findCalngVC=[[FindChallengesViewConroller alloc]initWithNibName:@"FindChallengesViewConroller" bundle:nil];
+    findCalngVC.title=@"Find A Challenge";
+    [self.navigationController pushViewController:findCalngVC animated:YES];
+    
+}
+
+- (IBAction)btnCreatePressed:(id)sender {
+    CreateChlng1ViewController *crtChlng1VC=[[CreateChlng1ViewController alloc]initWithNibName:@"CreateChlng1ViewController" bundle:nil];
+    crtChlng1VC.title=@"Step 1";
+    [self.navigationController pushViewController:crtChlng1VC animated:YES];
+
+}
+-(IBAction)btnHomePressed:(id)sender{
+    
+    if (!isOpen) {
+        
+        [self viewHomeOpenAnim];
+        
+        
+    }else{
+        [self viewHomeCloseAnim];
+    }
+    
+}
+
+- (IBAction)btnSettingPressed:(id)sender {
+    [UIView animateWithDuration:0.5
+                          delay:0.0
+                        options:UIViewAnimationCurveEaseIn
+                     animations:^{
+                         
+                         self.viewHome.frame = CGRectMake(0,-176, self.viewHome.frame.size.width,176);
+                         isOpen=NO;
+                     } completion:^(BOOL finished) {
+                         [self.viewHome removeFromSuperview];
+                         SettingViewController *settingVC=[[SettingViewController alloc]initWithNibName:@"SettingViewController" bundle:nil];
+                         settingVC.title=@"Settings";
+                         [self.navigationController pushViewController:settingVC animated:YES];
+                     }];
+    
+    
+}
+
+- (IBAction)btnActivityPressed:(id)sender {
+    
+    [UIView animateWithDuration:0.5
+                          delay:0.0
+                        options:UIViewAnimationCurveEaseIn
+                     animations:^{
+                         self.viewHome.frame = CGRectMake(0,-176, self.viewHome.frame.size.width,176);
+                         isOpen=NO;
+                     } completion:^(BOOL finished) {
+                         [self.viewHome removeFromSuperview];
+                         activtyVC  =[[ActivityViewController alloc]initWithNibName:@"ActivityViewController" bundle:nil];
+                         activtyVC.title=@"Activity";
+                         [self.navigationController pushViewController:activtyVC animated:YES];
+                     }];
+    
+}
+
+-(IBAction)btnProfileAction:(id)sender{
+    [UIView animateWithDuration:0.5
+                          delay:0.0
+                        options:UIViewAnimationCurveEaseIn
+                     animations:^{
+                         
+                         self.viewHome.frame = CGRectMake(0,-176, self.viewHome.frame.size.width,176);
+                         isOpen=NO;
+                     } completion:^(BOOL finished) {
+                         [self.viewHome removeFromSuperview];
+                         ProfileViewController *profileVC=[[ProfileViewController alloc]initWithNibName:@"ProfileViewController" bundle:nil];
+                         profileVC.title=@"Profile";
+                         [self.navigationController pushViewController:profileVC animated:YES];
+                     }];
+    
+}
+-(void)viewHomeCloseAnim{
+    
+    
+    [UIView animateWithDuration:0.5
+                          delay:0.0
+                        options:UIViewAnimationCurveEaseIn
+                     animations:^{
+                         self.viewHome.frame = CGRectMake(0,-176, self.viewHome.frame.size.width,176);
+                         isOpen=NO;
+                     } completion:^(BOOL finished) {
+                         
+                         [self.viewHome removeFromSuperview];
+                         
+                     }];
+}
+-(void)viewHomeOpenAnim{
+    
+    [self.view addSubview:viewHome];
+    viewHome.frame=CGRectMake(0, -176, self.viewHome.frame.size.width, 176);
+    
+    
+    
+    [UIView animateWithDuration:0.5
+                          delay:0.0
+                        options:UIViewAnimationCurveEaseIn
+                     animations:^{
+                         self.viewHome.frame = CGRectMake(0,0, self.viewHome.frame.size.width,176);
+                         isOpen=YES;
+                     } completion:^(BOOL finished) {
+                         
+                     }];
+    
+}
+#pragma mark - own methods
+-(void)setNavigationComponent{
+    //Home Button
+    //UIButton *btnleft=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 80, 40)];
+    UIButton *btnleft=[UIButton buttonWithType:UIButtonTypeCustom];
+    [btnleft addTarget:self action:@selector(btnHomePressed:) forControlEvents:UIControlEventTouchUpInside];
+    [btnleft setFrame:CGRectMake(0, 0, 40, 44)];
+    [btnleft setImage:[UIImage imageNamed:@"headerHome"] forState:UIControlStateNormal];
+    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithCustomView:btnleft ];//]:[UIImage imageNamed:@"headerHome"] style:UIButtonTypeCustom target:self action:@selector(btnHomePressed:)];
+    self.navigationItem.leftBarButtonItem = leftButton;
+    //Tag Buttong
+    //headerFit
+    
+    UIButton *btnFitTag=[UIButton buttonWithType:UIButtonTypeCustom];
+    [btnFitTag addTarget:self action:@selector(btnCreatePressed:) forControlEvents:UIControlEventTouchUpInside];
+    [btnFitTag setFrame:CGRectMake(0, 0, 40, 44)];
+    [btnFitTag setImage:[UIImage imageNamed:@"headerFit"] forState:UIControlStateNormal];
+    UIBarButtonItem *rightButton1 = [[UIBarButtonItem alloc] initWithCustomView:btnFitTag ];
+    
+    //heasderSearch
+    UIButton *btnSearch=[UIButton buttonWithType:UIButtonTypeCustom];
+    [btnSearch addTarget:self action:@selector(btnFindPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [btnSearch setFrame:CGRectMake(0, 0, 30, 44)];
+    [btnSearch setImage:[UIImage imageNamed:@"headerSearch"] forState:UIControlStateNormal];
+    UIBarButtonItem *rightButton2 = [[UIBarButtonItem alloc] initWithCustomView:btnSearch ];
+    
+    UIToolbar* toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 105.0f, 44.01f)];
+    //For toolbar Background Transperent
+    const float colorMask[6] = {222, 255, 222, 255, 222, 255};
+    UIImage *img = [[UIImage alloc] init];
+    UIImage *maskedImage = [UIImage imageWithCGImage: CGImageCreateWithMaskingColors(img.CGImage, colorMask)];
+    [toolbar setBackgroundImage:maskedImage forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
+    // [toolbar setTintColor:[UIColor colorWithRed:204 green:0 blue:0 alpha:1]];
+    
+    // [toolbar setTranslucent:YES];
+    NSArray* buttons = [NSArray arrayWithObjects:rightButton2, rightButton1, nil];
+    [toolbar setItems:buttons animated:NO];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:toolbar];
+    
+    //self.navigationItem.rightBarButtonItem = rightButton1;
+    //TextField
+    
+}
+
+-(void)viewHomeRemove{
+    
+    [self.viewHome removeFromSuperview];
+    
+}
+
+
+#pragma mark ScrollView delegate
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if(!isLoading){
+        if (([scrollView contentOffset].y + scrollView.frame.size.height) >= [scrollView contentSize].height){
+            isLoading = YES;
+            [[NSBundle mainBundle] loadNibNamed:@"FooterLoadingView" owner:self options:nil];
+            self.footerActivityIndicator = self.activityIndicator;;
+            [tblTimeline setTableFooterView:[self activityIndicatorView]];;
+            [self startAnimation];
+            dispatch_async(kBgQueue,^{
+                
+                if (SingTimeRefresh==YES) {
+                    
+                }else{
+                
+                [self getUserAndChallengeDate:nil];
+                    
+                }
+                
+            });
+            
+            
+        }
+    }
+    //[pullToRefreshManager_ tableViewScrolled];
+    
+}
+
+#pragma mark Paging methods
+
+-(void)startAnimation{
+    [[self activityIndicatorView] setHidden:NO];
+    [[self footerActivityIndicator] startAnimating];
+}
+
+
+-(void)stopAnimation{
+    
+    [[self activityIndicatorView]setHidden:YES];
+    [[self footerActivityIndicator] stopAnimating];
+    isLoading = NO;
+    
+}
+
+
+@end

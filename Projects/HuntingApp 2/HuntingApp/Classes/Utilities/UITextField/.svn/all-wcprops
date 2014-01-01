@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svnrepo/!svn/ver/53545/SCB-Prototyping/Bridges/code/trunk/Bridges/Bridges/classes/Utilities/UITextField
+END
+UITextField+UITextFieldCustom.h
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svnrepo/!svn/ver/51107/SCB-Prototyping/Bridges/code/trunk/Bridges/Bridges/classes/Utilities/UITextField/UITextField+UITextFieldCustom.h
+END
+CustomTextField.h
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svnrepo/!svn/ver/53876/SCB-Prototyping/Bridges/code/trunk/Bridges/Bridges/classes/Utilities/UITextField/CustomTextField.h
+END
+UITextField+UITextFieldCustom.m
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svnrepo/!svn/ver/53545/SCB-Prototyping/Bridges/code/trunk/Bridges/Bridges/classes/Utilities/UITextField/UITextField+UITextFieldCustom.m
+END
+CustomTextField.m
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svnrepo/!svn/ver/53877/SCB-Prototyping/Bridges/code/trunk/Bridges/Bridges/classes/Utilities/UITextField/CustomTextField.m
+END

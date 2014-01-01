@@ -1,0 +1,100 @@
+//
+// Prefix header for all source files of the 'PropertyInspector' target in the 'PropertyInspector' project
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_4_0
+#warning "This project uses features only available in iOS SDK 4.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+#endif
+
+#define VERSION @"1.0"
+
+
+
+
+#define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0) //1
+
+#define APP_NAME @"AUCTION MANAGER"
+#define NOTIFICATION_LOGIN_URL @"NOTIFICATION_LOGIN_URL"
+#define NOTIFICATION_ERROR_KEY @"NOTIFICATION_ERROR_VALUE"
+
+#define REQ_LOGIN_KEY 101
+#define WEB_LOGIN_URL @"http://184.106.243.106/AMH4RAuction/login.aspx?"
+#define NOTIFICATION_LOGIN_KEY @"NOTIFICATION_LOGIN_KEY"
+
+#define REQ_VERSION_KEY 102
+#define WEB_GET_VERSION_URL @"http://184.106.243.106/AMH4RAuction/getappVersion.aspx?"
+#define NOTIFICATION_GET_VERSION_KEY @"NOTIFICATION_GET_VERSION_VALUE"
+
+#define REQ_REGISTER_KEY 103
+#define WEB_GET_REGISTER @"http://184.106.243.106/AMH4RAuction/registerDevice.aspx?"
+#define NOTIFICATION_GET_REGISTER_KEY @"NOTIFICATION_GET_VERSION_VALUE"
+
+//username=jimtest@testemail.com&password=jimtest@48&deviceId=1234456712
+
+
+#define GET_COUNTY_LIST 104
+#define WEB_GET_COUNTY_LIST @"http://184.106.243.106/AMH4RAuction/getCountyList.aspx?"
+#define NOTIFICATION_GET_COUNTY_LIST @"NOTIFICATION_GET_COUNTY_LIST"
+
+
+#define GET_TRUSTEES_LIST 105
+#define WEB_GET_TRUSTEES_LIST @"http://184.106.243.106/AMH4RAuction/getQualifiedProperties.aspx?"
+#define NOTIFICATION_GET_TRUSTEES_LIST @"NOTIFICATION_GET_TRUSTEES_LIST"
+
+#define POST_PAYMENT_LIST 107
+#define WEB_POST_PAYMENT_LIST @"http://184.106.243.106/AMH4RAuction/submitPaymentInfo.aspx?"
+#define NOTIFICATION_POST_PAYMENT_LIST @"NOTIFICATION_GET_TRUSTEES_LIST"
+
+#define WEB_POST_PAYMENT_PHOTO @"http://184.106.243.106/AMH4RAuction/submitPaymentPhoto.aspx";
+
+#define POST_PHOTO_LIST 109
+#define NOTIFICATION_POST_PHOTO_LIST @"NOTIFICATION_POST_PHOTO_LIST"
+
+
+#define GET_RECORDS_PROPERTY_ID @"select propertuID,address,city,state,zip,lattitude,longitude,borrowerfirstname,trusteefirstname,trusteeId,bidderlastname,bidderfirstname,biddermiddlename,maxbid,openingbid,status,updatedby,updatedate,bidderid,wonprice,AuctionId,AuctionDateTime,AuctionNote,legalDescription,auction_No,crierName,settleStatus,LoanDate,LoanAmount from County WHERE propertuID="
+
+#define GET_RECORDS_TRUSTEE_ID  @"select propertuID,address,city,state,zip,lattitude,longitude,borrowerfirstname,trusteefirstname,trusteeId,bidderlastname,bidderfirstname,biddermiddlename,maxbid,openingbid,status,updatedby,updatedate,bidderid,wonprice,AuctionId,AuctionDateTime,AuctionNote,legalDescription,auction_No,crierName,settleStatus,LoanDate,LoanAmount from County WHERE trusteeId="
+
+#define GET_ALL_TRSUTEE @"select DISTINCT (trusteeId),trusteefirstname from County"
+
+
+#define UPDATE_QUALIFIED_PROPERTY @"http://184.106.243.106/AMH4RAuction/updateQualifiedProperty.aspx?"
+#define REQ_UPDATE_PROPERTY 106
+#define NOTIFICATION_GET_UPDATE_PROPERTY @"NOTIFICATION_GET_UPDATE_PROPERTY"
+
+
+//sessionId=&pid=<propertyId>&auctionId=<auctionId>&borrower=<borrower>&openingBid=<openingBid>&trustee=<trustee>&crier=<crierName>&bidStatus=<TBD/MISSED/POSTPONED/WON/LOST/CANCELLED/OPEN_BID_HIGH>&settleStatus=<TBD/SETTLED/SETTLE_LATER>$closingBid=<closingBid>
+
+
+//changePassword.aspx?sessionId=<sessionId>&currPW=<currPW>&newPW=<newPW>
+
+#define POST_CHANGE_PASSWORD 1000
+#define WEB_POST_CHANGE_PASSWORD @"http://184.106.243.106/AMH4RAuction/changePassword.aspx?"
+#define NOTIFICATION_POST_CHANGE_PASSWORD @"NOTIFICATION_POST_CHANGE_PASSWORD"
+
+
+#define GET_AUCTION_STATUS 1001
+#define WEB_GET_AUCTION_STATUS @"http://184.106.243.106/AMH4RAuction/getAuctionStatus.aspx?"
+#define NOTIFICATION_GET_AUCTION_STATUS @"NOTIFICATION_GET_AUCTION_STATUS"
+
+
+//http://206.246.135.196/AH4RMAuction/login.aspx?
+
+#define GET_PROPERTY_BY_STATUS 1002
+#define WEB_GET_PROPERTY_BY_STATUS @"http://184.106.243.106/AMH4RAuction/getPropertyByStatus.aspx?"
+#define NOTIFICATION_GET_PROPERTY_BY_STATUS @"NOTIFICATION_GET_PROPERTY_BY_STATUS"
+
+
+
+#define GET_CHECK_AMOUNT_BY_NUMBER 1003
+#define WEB_GET_CHECK_AMOUNT_BY_NUMBER @"http://184.106.243.106/AMH4RAuction/getCheckInfo.aspx?"
+#define NOTIFICATION_GET_CHECK_AMOUNT_BY_NUMBER @"NOTIFICATION_GET_CHECK_AMOUNT_BY_NUMBER"
+
+//http://206.246.135.196/AH4RMAuction/getCheckInfo.aspx?sessionId=8C7E6F94-EC90-4659-9C21-DCA5B7B65AB6&countyID=14

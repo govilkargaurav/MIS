@@ -1,0 +1,28 @@
+//
+// Prefix header for all source files of the 'FitTagApp' target in the 'FitTagApp' project
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_4_0
+#warning "This project uses features only available in iOS SDK 4.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+    #import <Parse/Parse.h>
+#endif
+//alert with message and title
+#define DisplayAlertWithTitle(title,msg){UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:title message:msg delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil]; [alertView show]; }
+
+#define DisplayNoInternate {UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Suvi.me" message:@"oops!!!There is a problem in the internet connection!!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil]; [alertView show]; }
+
+
+//alert with only localized message
+#define DisplayLocalizedAlert(msg){UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"FitTag" message:NSLocalizedString(msg,@"") delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil]; [alertView show]; }
+
+//alert with localized message and title
+#define DisplayLocalizedAlertWithTitle(msg,title){UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(title,@"") message:NSLocalizedString(msg,@"") delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil]; [alertView show]; }
+
+#define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)

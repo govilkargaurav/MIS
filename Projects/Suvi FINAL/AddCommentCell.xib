@@ -1,0 +1,650 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="8.00">
+	<data>
+		<int key="IBDocument.SystemTarget">1552</int>
+		<string key="IBDocument.SystemVersion">12F37</string>
+		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
+		<string key="IBDocument.AppKitVersion">1187.39</string>
+		<string key="IBDocument.HIToolboxVersion">626.00</string>
+		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
+			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+			<string key="NS.object.0">2083</string>
+		</object>
+		<array key="IBDocument.IntegratedClassDependencies">
+			<string>IBProxyObject</string>
+			<string>IBUIImageView</string>
+			<string>IBUILabel</string>
+			<string>IBUITableViewCell</string>
+			<string>IBUIView</string>
+		</array>
+		<array key="IBDocument.PluginDependencies">
+			<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+		</array>
+		<object class="NSMutableDictionary" key="IBDocument.Metadata">
+			<string key="NS.key.0">PluginDependencyRecalculationVersion</string>
+			<integer value="1" key="NS.object.0"/>
+		</object>
+		<array class="NSMutableArray" key="IBDocument.RootObjects" id="1000">
+			<object class="IBProxyObject" id="372490531">
+				<string key="IBProxiedObjectIdentifier">IBFilesOwner</string>
+				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+			</object>
+			<object class="IBProxyObject" id="975951072">
+				<string key="IBProxiedObjectIdentifier">IBFirstResponder</string>
+				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+			</object>
+			<object class="IBUITableViewCell" id="108433052">
+				<reference key="NSNextResponder"/>
+				<int key="NSvFlags">292</int>
+				<array class="NSMutableArray" key="NSSubviews">
+					<object class="IBUIView" id="374092529">
+						<reference key="NSNextResponder" ref="108433052"/>
+						<int key="NSvFlags">256</int>
+						<array class="NSMutableArray" key="NSSubviews">
+							<object class="IBUIImageView" id="139377030">
+								<reference key="NSNextResponder" ref="374092529"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{5, 5}, {45, 45}}</string>
+								<reference key="NSSuperview" ref="374092529"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="100413843"/>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+							</object>
+							<object class="IBUILabel" id="564278276">
+								<reference key="NSNextResponder" ref="374092529"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{59, 20}, {230, 14}}</string>
+								<reference key="NSSuperview" ref="374092529"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="86433402"/>
+								<bool key="IBUIOpaque">NO</bool>
+								<bool key="IBUIClipsSubviews">YES</bool>
+								<int key="IBUIContentMode">7</int>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<string key="IBUIText">Label</string>
+								<object class="NSColor" key="IBUITextColor" id="257392330">
+									<int key="NSColorSpace">1</int>
+									<bytes key="NSRGB">MCAwIDAAA</bytes>
+									<string key="IBUIColorCocoaTouchKeyPath">darkTextColor</string>
+								</object>
+								<nil key="IBUIHighlightedColor"/>
+								<int key="IBUIBaselineAdjustment">1</int>
+								<float key="IBUIMinimumFontSize">14</float>
+								<int key="IBUINumberOfLines">0</int>
+								<object class="IBUIFontDescription" key="IBUIFontDescription">
+									<int key="type">1</int>
+									<double key="pointSize">14</double>
+								</object>
+								<object class="NSFont" key="IBUIFont">
+									<string key="NSName">Helvetica</string>
+									<double key="NSSize">14</double>
+									<int key="NSfFlags">16</int>
+								</object>
+								<double key="preferredMaxLayoutWidth">230</double>
+							</object>
+							<object class="IBUILabel" id="100413843">
+								<reference key="NSNextResponder" ref="374092529"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{59, 5}, {247, 14}}</string>
+								<reference key="NSSuperview" ref="374092529"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="564278276"/>
+								<bool key="IBUIOpaque">NO</bool>
+								<bool key="IBUIClipsSubviews">YES</bool>
+								<int key="IBUIContentMode">7</int>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<string key="IBUIText">Label</string>
+								<reference key="IBUITextColor" ref="257392330"/>
+								<nil key="IBUIHighlightedColor"/>
+								<int key="IBUIBaselineAdjustment">1</int>
+								<float key="IBUIMinimumFontSize">14</float>
+								<int key="IBUINumberOfLines">0</int>
+								<object class="IBUIFontDescription" key="IBUIFontDescription">
+									<int key="type">2</int>
+									<double key="pointSize">14</double>
+								</object>
+								<object class="NSFont" key="IBUIFont">
+									<string key="NSName">Helvetica-Bold</string>
+									<double key="NSSize">14</double>
+									<int key="NSfFlags">16</int>
+								</object>
+								<double key="preferredMaxLayoutWidth">247</double>
+							</object>
+							<object class="IBUILabel" id="86433402">
+								<reference key="NSNextResponder" ref="374092529"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{59, 38}, {143, 15}}</string>
+								<reference key="NSSuperview" ref="374092529"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="866925238"/>
+								<bool key="IBUIOpaque">NO</bool>
+								<bool key="IBUIClipsSubviews">YES</bool>
+								<int key="IBUIContentMode">7</int>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<string key="IBUIText"/>
+								<reference key="IBUITextColor" ref="257392330"/>
+								<nil key="IBUIHighlightedColor"/>
+								<int key="IBUIBaselineAdjustment">1</int>
+								<float key="IBUIMinimumFontSize">12</float>
+								<int key="IBUINumberOfLines">0</int>
+								<object class="IBUIFontDescription" key="IBUIFontDescription">
+									<int key="type">1</int>
+									<double key="pointSize">12</double>
+								</object>
+								<object class="NSFont" key="IBUIFont">
+									<string key="NSName">Helvetica</string>
+									<double key="NSSize">12</double>
+									<int key="NSfFlags">16</int>
+								</object>
+								<double key="preferredMaxLayoutWidth">143</double>
+							</object>
+							<object class="IBUIView" id="866925238">
+								<reference key="NSNextResponder" ref="374092529"/>
+								<int key="NSvFlags">266</int>
+								<string key="NSFrame">{{0, 56}, {320, 1}}</string>
+								<reference key="NSSuperview" ref="374092529"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
+								<string key="NSReuseIdentifierKey">_NS:9</string>
+								<object class="NSColor" key="IBUIBackgroundColor">
+									<int key="NSColorSpace">1</int>
+									<bytes key="NSRGB">MC42IDAuNiAwLjYAA</bytes>
+								</object>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+							</object>
+						</array>
+						<string key="NSFrameSize">{320, 56}</string>
+						<reference key="NSSuperview" ref="108433052"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="139377030"/>
+						<object class="NSColor" key="IBUIBackgroundColor">
+							<int key="NSColorSpace">3</int>
+							<bytes key="NSWhite">MCAwAA</bytes>
+						</object>
+						<bool key="IBUIOpaque">NO</bool>
+						<bool key="IBUIClipsSubviews">YES</bool>
+						<int key="IBUIContentMode">4</int>
+						<bool key="IBUIMultipleTouchEnabled">YES</bool>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+					</object>
+				</array>
+				<string key="NSFrameSize">{320, 57}</string>
+				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
+				<reference key="NSNextKeyView" ref="374092529"/>
+				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+				<reference key="IBUIContentView" ref="374092529"/>
+				<real value="57" key="IBUIRowHeight"/>
+			</object>
+		</array>
+		<object class="IBObjectContainer" key="IBDocument.Objects">
+			<array class="NSMutableArray" key="connectionRecords">
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">myCell</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="108433052"/>
+					</object>
+					<int key="connectionID">11</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">imgUser</string>
+						<reference key="source" ref="108433052"/>
+						<reference key="destination" ref="139377030"/>
+					</object>
+					<int key="connectionID">9</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">lblDateCell</string>
+						<reference key="source" ref="108433052"/>
+						<reference key="destination" ref="86433402"/>
+					</object>
+					<int key="connectionID">12</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">lblComment</string>
+						<reference key="source" ref="108433052"/>
+						<reference key="destination" ref="564278276"/>
+					</object>
+					<int key="connectionID">13</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">lblFullName</string>
+						<reference key="source" ref="108433052"/>
+						<reference key="destination" ref="100413843"/>
+					</object>
+					<int key="connectionID">19</int>
+				</object>
+			</array>
+			<object class="IBMutableOrderedSet" key="objectRecords">
+				<array key="orderedObjects">
+					<object class="IBObjectRecord">
+						<int key="objectID">0</int>
+						<array key="object" id="0"/>
+						<reference key="children" ref="1000"/>
+						<nil key="parent"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">-1</int>
+						<reference key="object" ref="372490531"/>
+						<reference key="parent" ref="0"/>
+						<string key="objectName">File's Owner</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">-2</int>
+						<reference key="object" ref="975951072"/>
+						<reference key="parent" ref="0"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">4</int>
+						<reference key="object" ref="108433052"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="86433402"/>
+							<reference ref="564278276"/>
+							<reference ref="139377030"/>
+							<reference ref="100413843"/>
+							<reference ref="866925238"/>
+						</array>
+						<reference key="parent" ref="0"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">5</int>
+						<reference key="object" ref="564278276"/>
+						<reference key="parent" ref="108433052"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">6</int>
+						<reference key="object" ref="86433402"/>
+						<reference key="parent" ref="108433052"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">7</int>
+						<reference key="object" ref="139377030"/>
+						<reference key="parent" ref="108433052"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">18</int>
+						<reference key="object" ref="100413843"/>
+						<reference key="parent" ref="108433052"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">31</int>
+						<reference key="object" ref="866925238"/>
+						<reference key="parent" ref="108433052"/>
+					</object>
+				</array>
+			</object>
+			<dictionary class="NSMutableDictionary" key="flattenedProperties">
+				<string key="-1.CustomClassName">AddCommentView</string>
+				<string key="-1.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="-2.CustomClassName">UIResponder</string>
+				<string key="-2.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="18.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="31.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="4.CustomClassName">AddCommentCell</string>
+				<string key="4.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="5.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="6.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="7.CustomClassName">EGOImageView</string>
+				<string key="7.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+			</dictionary>
+			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
+			<nil key="activeLocalization"/>
+			<dictionary class="NSMutableDictionary" key="localizations"/>
+			<nil key="sourceID"/>
+			<int key="maxID">31</int>
+		</object>
+		<object class="IBClassDescriber" key="IBDocument.Classes">
+			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
+				<object class="IBPartialClassDescription">
+					<string key="className">AddCommentCell</string>
+					<string key="superclassName">UITableViewCell</string>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="imgUser">UIImageView</string>
+						<string key="lblComment">UILabel</string>
+						<string key="lblDateCell">UILabel</string>
+						<string key="lblFullName">UILabel</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="imgUser">
+							<string key="name">imgUser</string>
+							<string key="candidateClassName">UIImageView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="lblComment">
+							<string key="name">lblComment</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="lblDateCell">
+							<string key="name">lblDateCell</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="lblFullName">
+							<string key="name">lblFullName</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/AddCommentCell.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">AddCommentView</string>
+					<string key="superclassName">UIViewController</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="Back:">id</string>
+						<string key="CommentToPost:">id</string>
+						<string key="Like:">id</string>
+						<string key="PostCliked:">id</string>
+						<string key="UNLike:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="Back:">
+							<string key="name">Back:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="CommentToPost:">
+							<string key="name">CommentToPost:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="Like:">
+							<string key="name">Like:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="PostCliked:">
+							<string key="name">PostCliked:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="UNLike:">
+							<string key="name">UNLike:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="TblView">UITableView</string>
+						<string key="btnComment">UIButton</string>
+						<string key="btnLike">UIButton</string>
+						<string key="btnUnLike">UIButton</string>
+						<string key="buttonComment">UIButton</string>
+						<string key="buttonDislike">UIButton</string>
+						<string key="buttonLike">UIButton</string>
+						<string key="imageBudgePro">UIImageView</string>
+						<string key="imageUpdatePro">UIImageView</string>
+						<string key="imageViewBGHeader">UIImageView</string>
+						<string key="imgMapView">UIImageView</string>
+						<string key="imgMusic">UIImageView</string>
+						<string key="imgViewPostImage">UIImageView</string>
+						<string key="imgViewUser">UIImageView</string>
+						<string key="imgViewYoutube">UIImageView</string>
+						<string key="imgWriterImage">UIImageView</string>
+						<string key="lblBudgeAct">OHAttributedLabel</string>
+						<string key="lblCommentCount">UILabel</string>
+						<string key="lblDate">UILabel</string>
+						<string key="lblDislikeCount">UILabel</string>
+						<string key="lblFeedPost">OHAttributedLabel</string>
+						<string key="lblLikeCount">UILabel</string>
+						<string key="lblLikesNos">OHAttributedLabel</string>
+						<string key="lblMapTitle">OHAttributedLabel</string>
+						<string key="lblMusicTitle">OHAttributedLabel</string>
+						<string key="lblNoOfFriends">UILabel</string>
+						<string key="lblSchool">UILabel</string>
+						<string key="lblTimeDuration">UILabel</string>
+						<string key="lblUpdateAct">OHAttributedLabel</string>
+						<string key="lblUserName">UILabel</string>
+						<string key="lblWroteBy">UILabel</string>
+						<string key="lblYouTubeTitle">UILabel</string>
+						<string key="myCell">AddCommentCell</string>
+						<string key="txtViewPost">UITextView</string>
+						<string key="viewBudge">UIView</string>
+						<string key="viewLikeDislike">UIView</string>
+						<string key="viewMap">UIView</string>
+						<string key="viewMusic">UIView</string>
+						<string key="viewNoteOnFriend">UIView</string>
+						<string key="viewSection">UIView</string>
+						<string key="viewTableHeaderImage">UIView</string>
+						<string key="viewTableHeaderVideo">UIView</string>
+						<string key="viewUpdatePro">UIView</string>
+						<string key="viewUpperBar">UIView</string>
+						<string key="viewYoutube">UIView</string>
+						<string key="webVideo">UIWebView</string>
+						<string key="webViewYoutube">UIWebView</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="TblView">
+							<string key="name">TblView</string>
+							<string key="candidateClassName">UITableView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="btnComment">
+							<string key="name">btnComment</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="btnLike">
+							<string key="name">btnLike</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="btnUnLike">
+							<string key="name">btnUnLike</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="buttonComment">
+							<string key="name">buttonComment</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="buttonDislike">
+							<string key="name">buttonDislike</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="buttonLike">
+							<string key="name">buttonLike</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="imageBudgePro">
+							<string key="name">imageBudgePro</string>
+							<string key="candidateClassName">UIImageView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="imageUpdatePro">
+							<string key="name">imageUpdatePro</string>
+							<string key="candidateClassName">UIImageView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="imageViewBGHeader">
+							<string key="name">imageViewBGHeader</string>
+							<string key="candidateClassName">UIImageView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="imgMapView">
+							<string key="name">imgMapView</string>
+							<string key="candidateClassName">UIImageView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="imgMusic">
+							<string key="name">imgMusic</string>
+							<string key="candidateClassName">UIImageView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="imgViewPostImage">
+							<string key="name">imgViewPostImage</string>
+							<string key="candidateClassName">UIImageView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="imgViewUser">
+							<string key="name">imgViewUser</string>
+							<string key="candidateClassName">UIImageView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="imgViewYoutube">
+							<string key="name">imgViewYoutube</string>
+							<string key="candidateClassName">UIImageView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="imgWriterImage">
+							<string key="name">imgWriterImage</string>
+							<string key="candidateClassName">UIImageView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="lblBudgeAct">
+							<string key="name">lblBudgeAct</string>
+							<string key="candidateClassName">OHAttributedLabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="lblCommentCount">
+							<string key="name">lblCommentCount</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="lblDate">
+							<string key="name">lblDate</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="lblDislikeCount">
+							<string key="name">lblDislikeCount</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="lblFeedPost">
+							<string key="name">lblFeedPost</string>
+							<string key="candidateClassName">OHAttributedLabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="lblLikeCount">
+							<string key="name">lblLikeCount</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="lblLikesNos">
+							<string key="name">lblLikesNos</string>
+							<string key="candidateClassName">OHAttributedLabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="lblMapTitle">
+							<string key="name">lblMapTitle</string>
+							<string key="candidateClassName">OHAttributedLabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="lblMusicTitle">
+							<string key="name">lblMusicTitle</string>
+							<string key="candidateClassName">OHAttributedLabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="lblNoOfFriends">
+							<string key="name">lblNoOfFriends</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="lblSchool">
+							<string key="name">lblSchool</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="lblTimeDuration">
+							<string key="name">lblTimeDuration</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="lblUpdateAct">
+							<string key="name">lblUpdateAct</string>
+							<string key="candidateClassName">OHAttributedLabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="lblUserName">
+							<string key="name">lblUserName</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="lblWroteBy">
+							<string key="name">lblWroteBy</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="lblYouTubeTitle">
+							<string key="name">lblYouTubeTitle</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="myCell">
+							<string key="name">myCell</string>
+							<string key="candidateClassName">AddCommentCell</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="txtViewPost">
+							<string key="name">txtViewPost</string>
+							<string key="candidateClassName">UITextView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="viewBudge">
+							<string key="name">viewBudge</string>
+							<string key="candidateClassName">UIView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="viewLikeDislike">
+							<string key="name">viewLikeDislike</string>
+							<string key="candidateClassName">UIView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="viewMap">
+							<string key="name">viewMap</string>
+							<string key="candidateClassName">UIView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="viewMusic">
+							<string key="name">viewMusic</string>
+							<string key="candidateClassName">UIView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="viewNoteOnFriend">
+							<string key="name">viewNoteOnFriend</string>
+							<string key="candidateClassName">UIView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="viewSection">
+							<string key="name">viewSection</string>
+							<string key="candidateClassName">UIView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="viewTableHeaderImage">
+							<string key="name">viewTableHeaderImage</string>
+							<string key="candidateClassName">UIView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="viewTableHeaderVideo">
+							<string key="name">viewTableHeaderVideo</string>
+							<string key="candidateClassName">UIView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="viewUpdatePro">
+							<string key="name">viewUpdatePro</string>
+							<string key="candidateClassName">UIView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="viewUpperBar">
+							<string key="name">viewUpperBar</string>
+							<string key="candidateClassName">UIView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="viewYoutube">
+							<string key="name">viewYoutube</string>
+							<string key="candidateClassName">UIView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="webVideo">
+							<string key="name">webVideo</string>
+							<string key="candidateClassName">UIWebView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="webViewYoutube">
+							<string key="name">webViewYoutube</string>
+							<string key="candidateClassName">UIWebView</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/AddCommentView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">EGOImageView</string>
+					<string key="superclassName">UIImageView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/EGOImageView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">OHAttributedLabel</string>
+					<string key="superclassName">UILabel</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">delegate</string>
+						<string key="NS.object.0">id</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">delegate</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">delegate</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/OHAttributedLabel.h</string>
+					</object>
+				</object>
+			</array>
+		</object>
+		<int key="IBDocument.localizationMode">0</int>
+		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
+		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
+		<int key="IBDocument.defaultPropertyAccessControl">3</int>
+		<string key="IBCocoaTouchPluginVersion">2083</string>
+	</data>
+</archive>

@@ -1,0 +1,22 @@
+//
+// Prefix header for all source files of the 'T&L' target in the 'T&L' project
+//
+
+#import <Availability.h>
+#import "GlobleClass.h"
+
+#ifndef __IPHONE_4_0
+#warning "This project uses features only available in iOS SDK 4.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+
+#endif
+
+
+#define GLOBLE_TOCKEN @"1726204214321678|xTAieBBJoDaWmBsG1stxfq4zLO4"
+#define ALL_RESOURCE_LIST_WEBSERVICE @"http://assessments.tlisc.org.au/webservices/resources/getall.php?jsoncallback=?&token="
+#define APP_NAME @"T&L"
+#define APPDEL [AppDelegate classInstance]
